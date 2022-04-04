@@ -1,0 +1,34 @@
+on:
+  push:
+    branches:
+      - master
+name: 🚀 Deploy API.GRULOG.COM ON PUSH 
+jobs:
+  web-deploy:
+    name: 🎉 Deploy GRULOG API V0
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+    
+    - name: 📂 Sync files TO SERVER
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ${{ secrets.API_FTP_HOST }}
+        username: ${{ secrets.API_FTP_USERNAME }}
+        password: ${{ secrets.API_FTP_PASS }}
+        exclude: .git*
+          - .git*/**
+          - node_modules/**
+          - node_modules/**/*
+          - .ENV
+          - .env
+          - .DS_Store
+          - error_log
+          - var/**
+          - vendor/**
+          - .htaccess
+          - .user.ini
+          - error_log
+          - .zip
+          - _old

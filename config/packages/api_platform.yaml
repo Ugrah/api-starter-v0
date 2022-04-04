@@ -1,0 +1,17 @@
+api_platform:
+    title: 'Grulog Dev Api'
+    # The description of the API.
+    description: 'Grulog Dev Api Developped by Ulrich GRAH'
+
+    # The version of the API.
+    version: '0.0.0'
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    patch_formats:
+        json: ['application/merge-patch+json']
+    swagger:
+        versions: [3]
+        api_keys:
+          apiKey:
+            name: Authorization
+            type: header
